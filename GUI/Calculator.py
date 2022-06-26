@@ -1,3 +1,13 @@
+""" Title: Calculator project
+    Author: Guillermo Leon
+    website: https://savingl.cl
+
+    To do:
+        -Refactor some functions as totalizacion()
+        -Write comments to make it more understandable
+
+"""
+
 from tkinter import *
 raiz=Tk()
 miFrame=Frame(raiz)
@@ -35,9 +45,8 @@ def suma(num):
     if operacion == "suma":
         resultado += float(num)
         numeroPantalla.set(str(resultado))
-
+    
     operacion = "suma"
-    print(operacion)
 
 def resta(num):
     global operacion, resultado, signoNegativoSeleccionado, habilitaNuevoIngresoDeNumero 
@@ -50,9 +59,32 @@ def resta(num):
     if operacion == "resta":
         resultado -= float(num)
         numeroPantalla.set(str(resultado))
-    
     operacion = "resta"
-    print(operacion)
+
+def division(num):
+    global operacion, resultado, habilitaNuevoIngresoDeNumero
+
+    habilitaNuevoIngresoDeNumero = True
+
+    if operacion != "division":
+        totalizacion()
+    if operacion == "division":
+        resultado = resultado/float(numeroPantalla.get())
+        numeroPantalla.set(str(resultado))
+    operacion = "division"
+
+
+def multiplicacion(num):
+    global operacion, resultado, habilitaNuevoIngresoDeNumero
+
+    habilitaNuevoIngresoDeNumero = True
+
+    if operacion != "multiplicacion":
+        totalizacion()
+    if operacion == "multiplicacion":
+        resultado = resultado*float(numeroPantalla.get())
+        numeroPantalla.set(str(resultado))
+    operacion = "multiplicacion"
 
 def totalizacion(str="regularBehaviour"):
     global resultado
@@ -60,18 +92,26 @@ def totalizacion(str="regularBehaviour"):
 
     if operacion == "":
         resultado = float(numeroPantalla.get())
+
     elif operacion == "suma":
         numeroPantalla.set(resultado+float(numeroPantalla.get()))
-        resultado == float(numeroPantalla.get())
-        print(resultado)
+        resultado = float(numeroPantalla.get())
+
     elif operacion == "resta":
         numeroPantalla.set(resultado-float(numeroPantalla.get()))
-        resultado == float(numeroPantalla.get()) #el problema actual está aquí, esta variable no se actualiza no sé por qué, al parecer la instrucción de arriba se tarda en ejecutarse y por ende
-        print(resultado)
-    
+        resultado = float(numeroPantalla.get())
+
+    elif operacion == "division":
+        numeroPantalla.set(resultado/float(numeroPantalla.get()))
+        resultado = float(numeroPantalla.get())
+
+    elif operacion == "multiplicacion":
+        numeroPantalla.set(resultado*float(numeroPantalla.get()))
+        resultado = float(numeroPantalla.get())
+
     if str == "=":
-        resultado = 0 #resetea resultado cuando se llama a totalización desde el boton "="
-    
+        resultado = float(numeroPantalla.get())
+        operacion = ""
 
 def comaDecimal():
     if numeroPantalla.get().find('.') >= 0:
@@ -93,7 +133,7 @@ boton8=Button(miFrame,text="8", width=3, command=lambda:selectnum("8"))
 boton8.grid(row=2, column=2)
 boton9=Button(miFrame,text="9", width=3,  command=lambda:selectnum("9"))
 boton9.grid(row=2, column=3)
-botonDiv=Button(miFrame,text="/", width=3)
+botonDiv=Button(miFrame,text="/", width=3, command=lambda:division(numeroPantalla.get()))
 botonDiv.grid(row=2, column=4)
 
 """---------------- fila 2 ----------------------"""
@@ -104,7 +144,7 @@ boton5=Button(miFrame,text="5", width=3, command=lambda:selectnum("5"))
 boton5.grid(row=3, column=2)
 boton6=Button(miFrame,text="6", width=3, command=lambda:selectnum("6"))
 boton6.grid(row=3, column=3)
-botonMult=Button(miFrame,text="x", width=3)
+botonMult=Button(miFrame,text="x", width=3, command=lambda:multiplicacion(numeroPantalla.get()))
 botonMult.grid(row=3, column=4)
 
 """---------------- fila 3 ----------------------"""
@@ -134,17 +174,3 @@ botonBorrar=Button(miFrame,text="C", width=3, command=borrar)
 botonBorrar.grid(row=6, column=1,)
 
 raiz.mainloop()
-
-
-""" if resultado != 0:
-    numeroPantalla.set(resultado-float(numeroPantalla.get()))
-    resultado = float(numeroPantalla.get())
-else:
-    resultado = float(num) """
-
-""" if operacion == "resta":
-    resultado = variableRestaTemporal-float(numeroPantalla.get())
-    numeroPantalla.set(float(resultado))
-else:
-    resultado = float(num) #El problema actual está aquí, a resultado se le hace un decremento automático 
-    numeroPantalla.set(float(resultado)) """
