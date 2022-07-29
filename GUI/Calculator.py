@@ -73,7 +73,6 @@ def division(num):
         numeroPantalla.set(str(resultado))
     operacion = "division"
 
-
 def multiplicacion(num):
     global operacion, resultado, habilitaNuevoIngresoDeNumero
 

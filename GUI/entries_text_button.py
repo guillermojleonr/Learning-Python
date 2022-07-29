@@ -1,6 +1,6 @@
 from tkinter import *
 root=Tk()
-miFrame=Frame(width="1200", height="600")
+miFrame=Frame(width="1200", height="600") #dimensions expresses in pixels
 miFrame.pack()
 
 minombre=StringVar()
@@ -20,6 +20,7 @@ scrollVert=Scrollbar(miFrame,command=textoComentario.yview) #yview = scrollbaer 
 scrollVert.grid(row=4,column=2,sticky="nsew") #nsew hace que el scroll bar se ajustea al widget al que pertenece
 
 textoComentario.config(yscrollcommand=scrollVert.set) #Scrollbar se ajusta según texto escrito
+
 labelEmail=Label(miFrame,text="Email")
 labelEmail.grid(row=0,column=0, sticky="e", padx=10, pady=10)
 
