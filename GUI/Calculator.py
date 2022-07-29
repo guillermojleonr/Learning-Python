@@ -20,7 +20,7 @@ signoNegativoSeleccionado = False
 operacion = ""
 
 def selectnum(num):
-    global operacion, habilitaNuevoIngresoDeNumero
+    global habilitaNuevoIngresoDeNumero
     if habilitaNuevoIngresoDeNumero == True:
         numeroPantalla.set(num)
         habilitaNuevoIngresoDeNumero = False
