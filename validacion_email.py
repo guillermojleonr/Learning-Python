@@ -1,9 +1,8 @@
 """ Ejercicio: Comprobar si un email está bien escrito """
 
-print("Hola fulanito/a, gracias por ejecutarme")
+print("Hola, gracias por ejecutarme")
 nombre = input("Dime, ¿cuál tu nombre? ")
-print("Perfecto ",nombre, "gracias por permitirme entrar en tu computadora muajajaja.")
-print("Mentira", nombre, "es una broma de mal gusto, no puedo hacer nada malo, pero ojo nunca abras un archivo si no sabes de donde viene.")
+print("Perfecto ",nombre, "gracias por ejecutarme.")
 print("Bien, ¿que hace este programa?, valida direcciones de email para verificar que esté escrito correctamente: ")
 print("1. Si escribes un email con más de 1 '@', por ejemplo 'email@@dominio.com'\n2. Si escribes un email con más de un '.' en el dominio, por ej: email@dominio..com")
 print("3. Si colocas la arroba en un lugar incorrecto, por ej: '@tuemail' o 'tuemail@'")
